@@ -124,3 +124,5 @@ function validaUI_PERC_20( ui ){
 	}
 	else{ set_css_error( $( ui ) ); };
 }
+
+console.log("TEST ME");
