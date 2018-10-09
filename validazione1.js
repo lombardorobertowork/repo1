@@ -101,7 +101,7 @@ function disableUI( ui ){
 	var lightGray = "#D3D3D3";
 	ui.attr( "disabled", true ); $('label[for='+ui.attr('id')+']').css("color", lightGray );
 	if( ui.is(':checkbox') ){ ui.prop('checked', false); }
-	else if( ui.is(':text') ){ ui.val(''); }
+	else if( ui.is(':text') || ui.is(':textarea') ){ ui.val(''); }
 	// ui.trigger( "change" );
 }
 
@@ -179,4 +179,4 @@ function controllaCF_PERS( ui ){ ui.on( 'input', function(){ validaUI_CF(   ui )
 function controllaCF_AZ( ui ){   ui.on( 'input', function(){ validaUI_CF_AZIENDA(   ui ); }); validaUI_CF_AZIENDA( ui ); };
 function controllaQUOTA( ui ){   ui.on( 'input', function(){ validaUI_QUOTA(   ui ); }); validaUI_QUOTA( ui ); };
 
-console.log("TEST ME 4g");
+console.log("TEST ME 4h");
