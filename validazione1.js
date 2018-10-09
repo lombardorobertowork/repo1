@@ -186,19 +186,19 @@ function enableUI( ui ){
 	// ui.trigger( "change" );
 }
 
-function checkboxEnablesUis( controllerCheckbox, controlledUIS )
+function checkboxEnablesUis( controllerCheckbox, controlledUIS, enableWhenChecked=true )
 {
 	var f1 = function() { 
 		var isChecked = false;
 		$.each( controllerCheckbox, function( i0, val0 ){ if( val0.is(":checked") ){ isChecked = true; } } );
 		if( isChecked ){ 
 			$.each( controlledUIS, function( i, val ){ 
-				enableUI( val ); 
+				if( enableWhenChecked ){ enableUI( val ); } else { disableUI( val );  } 
 			} );	
 			$.each( controlledUIS, function( i, val ){ val.trigger( "change" ); } );	
 		} else { 
 			$.each( controlledUIS, function( i, val ){ 
-				disableUI( val ); 
+				if( enableWhenChecked ){ disableUI( val ); } else { enableUI( val );  } 
 			} );	 
 			$.each( controlledUIS, function( i, val ){ val.trigger( "change" ); } );	
 		}
@@ -280,4 +280,4 @@ function controllaIMPORTO( ui )
 
 };
 
-console.log("TEST ME 4p");
+console.log("TEST ME 4q");
