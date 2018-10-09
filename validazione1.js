@@ -15,6 +15,81 @@ function is_decimal( numString ){ return /^\d+(\,\d+)?$/.test( numString ); }
 
 function get_text( elem ){ return elem.val().trim(); }
 
+// --------- FORMATI NUMERICI ----------
+	
+	// Rileva formato numerico: CIFRA+ PUNTO CIFRA CIFRA
+	function is_formato_punto( str ) { return /^\d+(\.\d{1,2})?$/.test( str.trim() ); }
+	// RILEVA formato, ad es: 123.456,78
+	function is_formato_punto_e_virgola( str ){ return /^\d{1,3}(\.\d\d\d)*\,\d{1,2}$/.test( str.trim() ); }
+	// Rileva formato, ad es: 123,456
+	function is_percent( str ) { return /^\-?\d+(\,\d{1,3})?$/.test( str.trim() ); }
+	// Conversione fra formati numerici
+	function convertFormatoPuntoToFormatoPuntoEVirgola( str )
+	{
+		var tokens = str.split(".");
+		var integerPart = tokens[0]; 
+		var numInPointVirgFormat = "";
+		for ( var i = 0; i < integerPart.length; i++ ) 
+		{
+			if( i > 0 && ( ( (integerPart.length - i) % 3) === 0) ){ numInPointVirgFormat = numInPointVirgFormat + "." + integerPart.charAt( i ); }
+			else{ numInPointVirgFormat = numInPointVirgFormat + integerPart.charAt( i ); }
+		}
+		var fractionalPart = tokens[1]; 
+		
+		if( tokens[1] != undefined )
+		{
+		  numInPointVirgFormat = numInPointVirgFormat + "," + fractionalPart;
+		} 
+		else
+		{
+		  numInPointVirgFormat = numInPointVirgFormat + ",00"; 
+		};
+		return numInPointVirgFormat;
+	}
+	function convertFormatoPuntoEVirgolaToFormatoPunto( str )
+	{
+		var res = "";
+		for ( var i = 0; i < str.length; i++ ) 
+		{
+			var nextChar = ""; 
+			var currChar = str.charAt( i );
+			
+			if( currChar === "." ){ nextChar = ""; }
+			else if( currChar === "," ){ nextChar = "."; }
+			else { nextChar = currChar;  }	
+			res = res + nextChar;
+		}
+		return res;
+	}
+
+// --------- FORMULE ------------
+	
+	function formula_importo_offerta( base_asta, ribasso ){ return base_asta.times( new Big(100).minus( ribasso ) ).div(100); }
+	
+	function avvia_calcolo_importo_offerta(  )
+	{
+		var ba = getBaseAstaFromUI();
+		var ro = getRibassoFromUI();
+		if( (ba!==undefined) && (ro!==undefined) )
+		{
+			var io = formula_importo_offerta( ba, ro );	
+			setOffertaUI( io );
+		}		
+	}
+
+	function formula_ribasso( base_asta, importo_offerta ){ return new Big(100).minus( importo_offerta.times(100).div(base_asta) );  }
+	
+	function avvia_calcolo_ribasso(  )
+	{
+		var ba = getBaseAstaFromUI();
+		var io = getOffertaFromUI();
+		if( (ba!==undefined) && (io!==undefined) )
+		{
+			var rib = formula_ribasso( ba, io );	
+			setRibassoUI( rib );
+		}		
+	}
+
 // ---------- FUNZIONI DI VALIDAZIONE -------------
 
 function validaCF( codFiscale )
@@ -180,4 +255,4 @@ function controllaCF_PERS( ui ){ ui.on( 'input', function(){ validaUI_CF(   ui )
 function controllaCF_AZ( ui ){   ui.on( 'input', function(){ validaUI_CF_AZIENDA(   ui ); }); validaUI_CF_AZIENDA( ui ); };
 function controllaQUOTA( ui ){   ui.on( 'input', function(){ validaUI_QUOTA(   ui ); }); validaUI_QUOTA( ui ); };
 
-console.log("TEST ME 4l");
+console.log("TEST ME 4m");
