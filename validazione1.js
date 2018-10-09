@@ -15,7 +15,7 @@ function is_decimal( numString ){ return /^\d+(\,\d+)?$/.test( numString ); }
 
 function get_text( elem ){ return elem.val().trim(); }
 
-// ---------- FUNCZIONI DI VALIDAZIONE -------------
+// ---------- FUNZIONI DI VALIDAZIONE -------------
 
 function validaCF( codFiscale )
 {
@@ -91,6 +91,23 @@ function disableUI( ui ){
 function enableUI( ui ){
 	ui.removeAttr("disabled"); $('label[for='+ui.attr('id')+']').css("color", "black" );
 	// ui.trigger( "change" );
+}
+
+function checkboxEnablesUis( controllerCheckbox, controlledUIS )
+{
+	var f1 = function() { 
+		var isChecked = false;
+		$.each( controllerCheckbox, function( i0, val0 ){ if( val0.is(":checked") ){ isChecked = true; } } );
+		if( isChecked ){ 
+			$.each( controlledUIS, function( i, val ){ enableUI( val ); } );	
+			$.each( controlledUIS, function( i, val ){ val.trigger( "change" ); } );	
+		} else { 
+			$.each( controlledUIS, function( i, val ){ disableUI( val ); } );	 
+			$.each( controlledUIS, function( i, val ){ val.trigger( "change" ); } );	
+		}
+	}; 
+	$.each( controllerCheckbox, function( i2, val2 ){ val2.change( f1 );    } );
+	f1();
 }
 
 // -------------- VALIDAZIONE UI ---------------
