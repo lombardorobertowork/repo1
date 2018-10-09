@@ -85,9 +85,13 @@ function disableUI( ui ){
 	ui.attr( "disabled", true ); $('label[for='+ui.attr('id')+']').css("color", lightGray );
 	if( ui.is(':checkbox') ){ ui.prop('checked', false); }
 	else if( ui.is(':text') ){ ui.val(''); }
+	ui.trigger( "change" );
 }
 
-function enableUI( ui ){ui.removeAttr("disabled"); $('label[for='+ui.attr('id')+']').css("color", "black" );}
+function enableUI( ui ){
+	ui.removeAttr("disabled"); $('label[for='+ui.attr('id')+']').css("color", "black" );
+	ui.trigger( "change" );
+}
 
 // -------------- VALIDAZIONE UI ---------------
 
