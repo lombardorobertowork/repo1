@@ -254,5 +254,26 @@ function controllaPIVA(  ui ){   ui.on( 'input', function(){ validaUI_PIVA(   ui
 function controllaCF_PERS( ui ){ ui.on( 'input', function(){ validaUI_CF(   ui ); }); validaUI_CF( ui ); };
 function controllaCF_AZ( ui ){   ui.on( 'input', function(){ validaUI_CF_AZIENDA(   ui ); }); validaUI_CF_AZIENDA( ui ); };
 function controllaQUOTA( ui ){   ui.on( 'input', function(){ validaUI_QUOTA(   ui ); }); validaUI_QUOTA( ui ); };
+function controllaIMPORTO( ui )
+{
+	var f1 = function( converti )
+	{ 
+		var t = get_text( ui );
+		if( is_formato_punto( t ) && converti ) 
+		{
+			var numInPointVirgFormat = convertFormatoPuntoToFormatoPuntoEVirgola( t );
+			ui.val( numInPointVirgFormat );	
+			set_css_valid( ui );
+		} 
+		else if( is_formato_punto_e_virgola(t) || is_vuoto(t) )
+		{	
+			set_css_valid( ui );  
+		}
+		else { set_css_error( ui ); }
+	}
 
-console.log("TEST ME 4m");
+	ui.on( 'input', f1 ); f1( true );
+
+};
+
+console.log("TEST ME 4n");
