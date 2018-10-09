@@ -67,6 +67,7 @@ function validaQUOTA( str ){
 
 // -------------------- UTILITA LOGICA UI
 
+// MEGLIO NON USARE QUESTA VERSIONE ... usa addRadioButtonBehaviour2
 function addRadioButtonBehaviour( uis )
 {
 	$.each( uis, function( i, ui )
@@ -75,6 +76,22 @@ function addRadioButtonBehaviour( uis )
 			if( ui.attr("id") != uij.attr("id") )
 			{
 				ui.change( function(){ if( ui.is(":checked") ) { uij.prop('checked', false ); } } );
+			}
+		});
+	});
+};
+
+function addRadioButtonBehaviour2( uis )
+{
+	$.each( uis, function( i, ui )
+	{
+		$.each( uis, function( j, uij ){
+			if( ui.attr("id") != uij.attr("id") )
+			{
+				ui.change( function(){ if( ui.is(":checked") ) { 
+					uij.prop('checked', false ); 
+					uij.trigger( 'change' );
+				} } );
 			}
 		});
 	});
@@ -162,4 +179,4 @@ function controllaCF_PERS( ui ){ ui.on( 'input', function(){ validaUI_CF(   ui )
 function controllaCF_AZ( ui ){   ui.on( 'input', function(){ validaUI_CF_AZIENDA(   ui ); }); validaUI_CF_AZIENDA( ui ); };
 function controllaQUOTA( ui ){   ui.on( 'input', function(){ validaUI_QUOTA(   ui ); }); validaUI_QUOTA( ui ); };
 
-console.log("TEST ME 4f");
+console.log("TEST ME 4g");
