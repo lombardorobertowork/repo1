@@ -85,12 +85,12 @@ function disableUI( ui ){
 	ui.attr( "disabled", true ); $('label[for='+ui.attr('id')+']').css("color", lightGray );
 	if( ui.is(':checkbox') ){ ui.prop('checked', false); }
 	else if( ui.is(':text') ){ ui.val(''); }
-	ui.trigger( "change" );
+	// ui.trigger( "change" );
 }
 
 function enableUI( ui ){
 	ui.removeAttr("disabled"); $('label[for='+ui.attr('id')+']').css("color", "black" );
-	ui.trigger( "change" );
+	// ui.trigger( "change" );
 }
 
 // -------------- VALIDAZIONE UI ---------------
@@ -145,4 +145,4 @@ function controllaCF_PERS( ui ){ ui.on( 'input', function(){ validaUI_CF(   ui )
 function controllaCF_AZ( ui ){   ui.on( 'input', function(){ validaUI_CF_AZIENDA(   ui ); }); validaUI_CF_AZIENDA( ui ); };
 function controllaQUOTA( ui ){   ui.on( 'input', function(){ validaUI_QUOTA(   ui ); }); validaUI_QUOTA( ui ); };
 
-console.log("TEST ME 4d");
+console.log("TEST ME 4e");
