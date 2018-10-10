@@ -174,15 +174,18 @@ function addRadioButtonBehaviour2( uis )
 
 function disableUI( ui ){
 	var lightGray = "#D3D3D3";
-	ui.attr( "disabled", true ); $('label[for='+ui.attr('id')+']').css("color", lightGray );
+	// ui.attr( "disabled", true ); 
+	ui.prop( "disabled", true ); 
+	$('label[for='+ui.attr('id')+']').css("color", lightGray );
 	if( ui.is(':checkbox') ){ ui.prop('checked', false); }
-	else if( ui.is(':text') || ui.is('textarea') )
-	{ ui.val(''); }
+	else if( ui.is(':text') || ui.is('textarea') ){ ui.val(''); }
 	// ui.trigger( "change" );
 }
 
 function enableUI( ui ){
-	ui.removeAttr("disabled"); $('label[for='+ui.attr('id')+']').css("color", "black" );
+	// ui.removeAttr("disabled"); 
+	ui.prop( "disabled", false ); 
+	$('label[for='+ui.attr('id')+']').css("color", "black" );
 	// ui.trigger( "change" );
 }
 
@@ -280,4 +283,4 @@ function controllaIMPORTO( ui )
 
 };
 
-console.log("TEST ME 4q");
+console.log("TEST ME 4r");
