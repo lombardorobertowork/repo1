@@ -140,6 +140,20 @@ function validaQUOTA( str ){
 	else{ return false; }
 }
 
+function validaEMAIL( str )
+{
+	if( is_vuoto(str) ){ return true; }
+	else if( /^\S+@\S+\.\S+$/.test( str ) ){ return true; }
+	else{ return false; }
+}
+
+// Accetta numeri spazi e trattini (-)
+function validaTEL( str ){
+	if( is_vuoto(str) ){ return true; }
+	else if( /^\d+([\d\s\-]+\d+)?$/.test( str ) ){ return true; }
+	else{ return false; }
+}
+
 // -------------------- UTILITA LOGICA UI
 
 // MEGLIO NON USARE QUESTA VERSIONE ... usa addRadioButtonBehaviour2
@@ -255,6 +269,18 @@ function validaUI_PERC_20( ui ){
 	else{ set_css_error( $( ui ) ); };
 }
 
+function validaUI_EMAIL( ui ){
+		var t = get_text( ui );
+		if( validaEMAIL(t) ) set_css_valid( $( ui ) );
+		else{ set_css_error( $( ui ) ); };
+}
+	
+function validaUI_TEL( ui ){
+	var t = get_text( ui );
+	if( validaTEL(t) ) set_css_valid( $( ui ) );
+	else{ set_css_error( $( ui ) ); };
+}
+
 // Per comodità aggiungo queste funzioni:
 function controllaCAP( ui ){     ui.on( 'input', function(){ validaUI_CAP(  ui ); }); validaUI_CAP( ui ); };
 function controllaPIVA(  ui ){   ui.on( 'input', function(){ validaUI_PIVA(   ui ); }); validaUI_PIVA( ui ); };
@@ -282,5 +308,45 @@ function controllaIMPORTO( ui )
 	ui.on( 'input', f1 ); f1( true );
 
 };
+function controllaEMAIL( ui ){ ui.on( 'input', function(){ validaUI_EMAIL(  ui ); }); validaUI_EMAIL( ui ); };
+function controllaTEL( ui ){ ui.on( 'input', function(){ validaUI_TEL(  ui ); }); validaUI_TEL( ui ); };
 
-console.log("TEST ME 4r");
+// -------------------------- VALIDAZIONE AUTOMATICA -------------------------
+
+// Cerca nella pagina le <label> che contengono all'interno del proprio HTML una delle stringhe  
+// nell'array labels. Recupera l'elemento puntato dalla stringa (indicato nell'attributo 'for') 
+// e lo passa come argomento alla funzione callback.
+// NOTA: controlla label che hanno nel loro html: 
+// - SOLO una stringa di labels
+// - una stringa di labels seguito o preceduta da uno spazio
+function validaTutti( labels, callback )
+{
+	// Per ogni oggetto html di tipo <label>
+	$( 'label' ).each( function( i,  ){
+		var id = null;
+		var labelElem = $(this);			
+		
+		
+		$.each( labels, function( i, val )
+		{ 
+			var s1 = labelElem.html().trim().toLowerCase();
+			var s2 = val.trim().toLowerCase();
+			console.log( "LABEL ELEM: " + s1 );
+			console.log( "VAL       : " + s2 );
+			
+			if( ( s1 === s2 ) || ( s1.includes( " " + s2 ) ) || ( s1.includes( s2 + " " ) ) ){	
+				id = labelElem.prop('for');	
+			}
+		});
+		
+		if( id && ( id.length > 0 ) ){	
+			callback( $( '#' + id ) );	
+		}		
+		
+	});
+};
+
+validaTutti( ["telefono", "fax", "cellulare"], controllaTEL );
+validaTutti( ["email", "pec"], controllaEMAIL );
+
+console.log("TEST ME 4s");
