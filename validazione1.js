@@ -331,8 +331,6 @@ function validaTutti( labels, callback )
 		{ 
 			var s1 = labelElem.html().trim().toLowerCase();
 			var s2 = val.trim().toLowerCase();
-			console.log( "LABEL ELEM: " + s1 );
-			console.log( "VAL       : " + s2 );
 			
 			if( ( s1 === s2 ) || ( s1.includes( " " + s2 ) ) || ( s1.includes( s2 + " " ) ) ){	
 				id = labelElem.prop('for');	
