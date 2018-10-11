@@ -347,4 +347,4 @@ function validaTutti( labels, callback )
 validaTutti( ["telefono", "fax", "cellulare"], controllaTEL );
 validaTutti( ["email", "pec"], controllaEMAIL );
 
-console.log("TEST ME 4s");
+console.log("TEST ME 4t");
