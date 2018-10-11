@@ -1,3 +1,4 @@
+/*
 
 // --------- UTILITA' CSS ----------
 	
@@ -348,3 +349,5 @@ validaTutti( ["telefono", "fax", "cellulare"], controllaTEL );
 validaTutti( ["email", "pec"], controllaEMAIL );
 
 console.log("TEST ME 4t");
+
+*/
