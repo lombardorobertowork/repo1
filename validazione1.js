@@ -271,8 +271,10 @@ function enableUI( ui ){
 	}
 }
 
-function checkboxEnablesUis( controllerCheckbox, controlledUIS, enableWhenChecked=true )
+function checkboxEnablesUis( controllerCheckbox, controlledUIS, enableWhenChecked ) 
 {
+	// enableWhenChecked di default viene impostato a true
+	if( enableWhenChecked === undefined ){ enableWhenChecked = true; }
 	var f1 = function() { 
 		var isChecked = false;
 		$.each( controllerCheckbox, function( i0, val0 ){ if( val0.is(":checked") ){ isChecked = true; } } );
@@ -427,6 +429,6 @@ validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva"], controllaPIVA );
 validaTutti( ["quota"], controllaCAP );
 
-console.log("TEST ME 5e");
+console.log("TEST ME 5f");
 
 
