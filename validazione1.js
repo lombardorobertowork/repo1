@@ -198,7 +198,7 @@ function disableUI( ui ){
 	else{
 		// Gestione date
 		var d = ui.attr('id'); 
-		if( d && ( d.contains( "[day]" ) || d.contains( "[month]" ) || d.contains( "[year]" ) ) { 
+		if( d && ( d.contains( "[day]" || d.contains( "[month]" ) || d.contains( "[year]" ) ) { 
 		   ui.val('0'); 
 		}
 		// Se il campo e' il giorno di una data --> disabilita anche gli altri campi della data
@@ -216,8 +216,8 @@ function enableUI( ui ){
 	
 	ui.prop( "disabled", false ); 
 	$('label[for='+ui.attr('id')+']').css("color", "black" );
-	var d = ui.attr('id');
 	
+	var d = ui.attr('id');
 	if( d && ( d.contains( "[day]" ) ){ 
 		var idm = d.substring( 0, d.length - 5 );  
 		enableUI( $( idm + "[month]" ) ); 
