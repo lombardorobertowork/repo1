@@ -187,7 +187,7 @@ function addRadioButtonBehaviour2( uis )
 	});
 };
 
-// Se riceve il campo "[day]" di una data disabilita anche gli altri due campi [month] e [year]
+// Se riceve un campo "[day]" di una data disabilita anche gli altri due campi [month] e [year]
 function disableUI( ui ){
 	var lightGray = "#D3D3D3";
 	// ui.attr( "disabled", true ); 
@@ -199,11 +199,11 @@ function disableUI( ui ){
 		// Gestione date
 		var d = ui.attr('name');
 		// console.log( "ID " + d );
-		if( d && ( d.contains( "[day]" ) || d.contains( "[month]" ) || d.contains( "[year]" ) ) ) { 
+		if( d && ( d.includes( "[day]" ) || d.includes( "[month]" ) || d.includes( "[year]" ) ) ) { 
 		   ui.val('0'); 
 		}
 		// Se il campo e' il giorno di una data --> disabilita anche gli altri campi della data
-		if( d && d.contains( "[day]" ) ){ 
+		if( d && d.includes( "[day]" ) ){ 
 			var idm = d.substring( 0, d.length - 5 );  
 			// console.log( "ID DATA: " + "#" + idm + "[month]" + "  OBJ " + $( "#" + idm + "[month]" ) );
 			
@@ -214,14 +214,14 @@ function disableUI( ui ){
 	// ui.trigger( "change" );
 }
 
-// // Se riceve il campo "[day]" di una data abilita anche gli altri due campi [month] e [year]
+// // Se riceve un campo "[day]" di una data abilita anche gli altri due campi [month] e [year]
 function enableUI( ui ){
 	
 	ui.prop( "disabled", false ); 
 	$('label[for='+ui.attr('id')+']').css("color", "black" );
 	
 	var d = ui.attr('name');
-	if( d && d.contains( "[day]" ) ){ 
+	if( d && d.includes( "[day]" ) ){ 
 		var idm = d.substring( 0, d.length - 5 );  
 		enableUI( $( "[name='" + idm + "[month]']" ) ); 
 		enableUI( $( "[name='" + idm + "[year]']" ) ); 
@@ -383,6 +383,6 @@ validaTutti( ["email", "pec"], controllaEMAIL );
 validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva"], controllaPIVA );
 
-console.log("TEST ME 5i");
+console.log("TEST ME 5a");
 
 
