@@ -204,6 +204,7 @@ function disableUI( ui ){
 		// Se il campo e' il giorno di una data --> disabilita anche gli altri campi della data
 		if( d && d.contains( "[day]" ) ){ 
 			var idm = d.substring( 0, d.length - 5 );  
+			console.log( "ID DATA: " + "#" + idm + "[month]" + "  OBJ " + $( "#" + idm + "[month]" ) );
 			disableUI( $( "#" + idm + "[month]" ) ); 
 			disableUI( $( "#" + idm + "[year]" ) ); 
 		}
