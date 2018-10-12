@@ -6,7 +6,7 @@ var valid_back_color = '#ffffff'; var error_back_color = '#ffb3b3';
 function set_css_error( elem ){ $( elem ).css('background-color', error_back_color ); }
 function set_css_valid( elem ){ $( elem ).css('background-color', valid_back_color ); }
 	
-// ---------- UTILITA VARIE	-----------------
+// ---------- UTILITA VARIE -----------------
 
 function is_vuoto( str ){ return str.trim() === ""; }	
 function is_num( numString ){ return /^\d+$/.test( numString ); }
