@@ -348,7 +348,7 @@ function validaTutti( labels, callback )
 validaTutti( ["telefono", "fax", "cellulare"], controllaTEL );
 validaTutti( ["email", "pec"], controllaEMAIL );
 validaTutti( ["cap"], controllaCAP );
-validaTutti( ["partita iva"], controllaCAP );
+validaTutti( ["partita iva"], controllaPIVA );
 
 console.log("TEST ME 4v");
 
