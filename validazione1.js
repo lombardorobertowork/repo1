@@ -114,7 +114,7 @@ function validaCF( codFiscale )
    return true;
 };
 
-function validaPIVA_EUROPEA( piva )
+function validaPIVA_EUROPEA( piva ) 
 {
 	return /^[a-z0-9]{8,12}$/.test( piva.trim().toLowerCase() );
 }
