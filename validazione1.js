@@ -204,8 +204,8 @@ function disableUI( ui ){
 		// Se il campo e' il giorno di una data --> disabilita anche gli altri campi della data
 		if( d && d.contains( "[day]" ) ){ 
 			var idm = d.substring( 0, d.length - 5 );  
-			disableUI( $( idm + "[month]" ) ); 
-			disableUI( $( idm + "[year]" ) ); 
+			disableUI( $( "#" + idm + "[month]" ) ); 
+			disableUI( $( "#" + idm + "[year]" ) ); 
 		}
 	}
 	// ui.trigger( "change" );
@@ -220,8 +220,8 @@ function enableUI( ui ){
 	var d = ui.attr('id');
 	if( d && d.contains( "[day]" ) ){ 
 		var idm = d.substring( 0, d.length - 5 );  
-		enableUI( $( idm + "[month]" ) ); 
-		enableUI( $( idm + "[year]" ) ); 
+		enableUI( $( "#" + idm + "[month]" ) ); 
+		enableUI( $( "#" + idm + "[year]" ) ); 
 	}
 }
 
@@ -380,6 +380,6 @@ validaTutti( ["email", "pec"], controllaEMAIL );
 validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva"], controllaPIVA );
 
-console.log("TEST ME 5b");
+console.log("TEST ME 5c");
 
 
