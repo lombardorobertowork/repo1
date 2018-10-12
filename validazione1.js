@@ -157,7 +157,7 @@ function validaTEL( str ){
 
 // -------------------- UTILITA LOGICA UI
 
-// MEGLIO NON USARE QUESTA VERSIONE ... usa addRadioButtonBehaviour2
+// MEGLIO NON USARE QUESTA VERSIONE ... usa addRadioButtonsBehaviour
 function addRadioButtonBehaviour( uis )
 {
 	$.each( uis, function( i, ui )
@@ -171,6 +171,7 @@ function addRadioButtonBehaviour( uis )
 	});
 };
 
+// MEGLIO NON USARE QUESTA VERSIONE ... usa addRadioButtonsBehaviour
 function addRadioButtonBehaviour2( uis )
 {
 	$.each( uis, function( i, ui )
@@ -186,6 +187,41 @@ function addRadioButtonBehaviour2( uis )
 		});
 	});
 };
+
+// riceve un array: ogni elemento sarà a sua volta un array di checkbox 
+// a cui si vuole aggiungere la logica di radio button.
+function addRadioButtonsBehaviour( radioButtonList )
+{
+
+	function private____addRadioButtonBehaviour( uis )
+	{
+		// Nel nostro sistema: Inizializza il primo elemento del radio button a CHECKED e 
+		// sottopone i dati al server
+		$( '#add #' + uis[0].attr("id") ).prop( "checked", true );
+		
+
+		// Aggiunge la logica di gestione del radio button nella ui
+		$.each( uis, function( i, ui )
+		{
+			$.each( uis, function( j, uij ){
+				if( ui.attr("id") != uij.attr("id") )
+				{
+					ui.change( function(){ if( ui.is(":checked") ) { 
+						uij.prop('checked', false ); 
+						uij.trigger( 'change' );
+					} } );
+				}
+			});
+		});
+	};
+
+	$.each( radioButtonList, function( i, uis ){
+		private____addRadioButtonBehaviour( uis );
+	} );
+
+	//  Nel nostro sistema: Invia i dati di inizializzazione del radio button al server
+	$( '#add :submit' ).click();
+}
 
 // Se riceve un campo "[day]" di una data disabilita anche gli altri due campi [month] e [year]
 function disableUI( ui ){
@@ -383,6 +419,6 @@ validaTutti( ["email", "pec"], controllaEMAIL );
 validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva"], controllaPIVA );
 
-console.log("TEST ME 5a");
+console.log("TEST ME 5b");
 
 
