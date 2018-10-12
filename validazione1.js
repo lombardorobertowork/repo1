@@ -392,7 +392,7 @@ function controllaTEL( ui ){ ui.on( 'input', function(){ validaUI_TEL(  ui ); })
 function validaTutti( labels, callback )
 {
 	// Per ogni oggetto html di tipo <label>
-	$( 'label' ).each( function( i,  ){
+	$( 'label' ).each( function( i ){
 		var id = null;
 		var labelElem = $(this);			
 		
@@ -420,6 +420,6 @@ validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva"], controllaPIVA );
 validaTutti( ["quota"], controllaCAP );
 
-console.log("TEST ME 5c");
+console.log("TEST ME 5d");
 
 
