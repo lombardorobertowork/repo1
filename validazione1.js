@@ -418,7 +418,8 @@ validaTutti( ["telefono", "fax", "cellulare"], controllaTEL );
 validaTutti( ["email", "pec"], controllaEMAIL );
 validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva"], controllaPIVA );
+validaTutti( ["quota"], controllaCAP );
 
-console.log("TEST ME 5b");
+console.log("TEST ME 5c");
 
 
