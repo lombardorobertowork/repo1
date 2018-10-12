@@ -187,6 +187,7 @@ function addRadioButtonBehaviour2( uis )
 	});
 };
 
+// Se riceve il campo "[day]" di una data disabilita anche gli altri due campi [month] e [year]
 function disableUI( ui ){
 	var lightGray = "#D3D3D3";
 	// ui.attr( "disabled", true ); 
@@ -195,18 +196,33 @@ function disableUI( ui ){
 	if( ui.is(':checkbox') ){ ui.prop('checked', false); }
 	else if( ui.is(':text') || ui.is('textarea') ){ ui.val(''); }
 	else{
-		// Il campo fa' parte di una data
+		// Gestione date
 		var d = ui.attr('id'); 
-		if( d && ( d.contains( "[day]" ) || d.contains( "month" ) || d.contains( "year" ) ){ ui.val('0'); }
+		if( d && ( d.contains( "[day]" ) || d.contains( "[month]" ) || d.contains( "[year]" ) ) { 
+		   ui.val('0'); 
+		}
+		// Se il campo e' il giorno di una data --> disabilita anche gli altri campi della data
+		if( d && ( d.contains( "[day]" ) ){ 
+			var idm = d.substring( 0, d.length - 5 );  
+			disableUI( $( idm + "[month]" ) ); 
+			disableUI( $( idm + "[year]" ) ); 
+		}
 	}
 	// ui.trigger( "change" );
 }
 
+// // Se riceve il campo "[day]" di una data abilita anche gli altri due campi [month] e [year]
 function enableUI( ui ){
-	// ui.removeAttr("disabled"); 
+	
 	ui.prop( "disabled", false ); 
 	$('label[for='+ui.attr('id')+']').css("color", "black" );
-	// ui.trigger( "change" );
+	var d = ui.attr('id');
+	
+	if( d && ( d.contains( "[day]" ) ){ 
+		var idm = d.substring( 0, d.length - 5 );  
+		enableUI( $( idm + "[month]" ) ); 
+		enableUI( $( idm + "[year]" ) ); 
+	}
 }
 
 function checkboxEnablesUis( controllerCheckbox, controlledUIS, enableWhenChecked=true )
@@ -364,6 +380,6 @@ validaTutti( ["email", "pec"], controllaEMAIL );
 validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva"], controllaPIVA );
 
-console.log("TEST ME 5a");
+console.log("TEST ME 5b");
 
 
