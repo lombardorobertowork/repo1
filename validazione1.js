@@ -1,6 +1,6 @@
 
 
-// --------- UTILITA' CSS ----------
+// --------- UTILITA' CSS ---------- 
 	
 var valid_back_color = '#ffffff'; var error_back_color = '#ffb3b3';
 function set_css_error( elem ){ $( elem ).css('background-color', error_back_color ); }
