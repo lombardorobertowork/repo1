@@ -194,6 +194,11 @@ function disableUI( ui ){
 	$('label[for='+ui.attr('id')+']').css("color", lightGray );
 	if( ui.is(':checkbox') ){ ui.prop('checked', false); }
 	else if( ui.is(':text') || ui.is('textarea') ){ ui.val(''); }
+	else{
+		// Il campo fa' parte di una data
+		var d = ui.attr('id'); 
+		if( d && ( d.contains( "[day]" ) || d.contains( "month" ) || d.contains( "year" ) ){ ui.val('0'); }
+	}
 	// ui.trigger( "change" );
 }
 
@@ -223,6 +228,15 @@ function checkboxEnablesUis( controllerCheckbox, controlledUIS, enableWhenChecke
 	}; 
 	$.each( controllerCheckbox, function( i2, val2 ){ val2.change( f1 );    } );
 	f1();
+}
+
+function applicaAData( uiID, callback ){
+	
+	var d1 = $( '[name="'+uiID+'[day]"]' );
+	var d2 = $( '[name="'+uiID+'[month]"]' );
+	var d3 = $( '[name="'+uiID+'[year]"]' );
+		
+	callback( d1 ); callback( d2 ); callback( d3 );
 }
 
 // -------------- VALIDAZIONE UI ---------------
@@ -350,6 +364,6 @@ validaTutti( ["email", "pec"], controllaEMAIL );
 validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva"], controllaPIVA );
 
-console.log("TEST ME 5");
+console.log("TEST ME 5a");
 
 
