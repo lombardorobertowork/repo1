@@ -205,8 +205,8 @@ function disableUI( ui ){
 		if( d && d.contains( "[day]" ) ){ 
 			var idm = d.substring( 0, d.length - 5 );  
 			console.log( "ID DATA: " + "#" + idm + "[month]" + "  OBJ " + $( "#" + idm + "[month]" ) );
-			disableUI( $( "[name='" + idm + "[month]'" ) ); 
-			disableUI( $( "[name='" + idm + "[year]'" ) ); 
+			disableUI( $( "[name='" + idm + "[month]']" ) ); 
+			disableUI( $( "[name='" + idm + "[year]']" ) ); 
 		}
 	}
 	// ui.trigger( "change" );
@@ -221,8 +221,8 @@ function enableUI( ui ){
 	var d = ui.attr('id');
 	if( d && d.contains( "[day]" ) ){ 
 		var idm = d.substring( 0, d.length - 5 );  
-		enableUI( $( "[name='" + idm + "[month]'" ) ); 
-		enableUI( $( "[name='" + idm + "[year]'" ) ); 
+		enableUI( $( "[name='" + idm + "[month]']" ) ); 
+		enableUI( $( "[name='" + idm + "[year]']" ) ); 
 	}
 }
 
@@ -381,6 +381,6 @@ validaTutti( ["email", "pec"], controllaEMAIL );
 validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva"], controllaPIVA );
 
-console.log("TEST ME 5e");
+console.log("TEST ME 5f");
 
 
