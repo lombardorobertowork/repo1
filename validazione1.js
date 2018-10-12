@@ -1,3 +1,5 @@
+console.log( "ie" );
+
 if (!String.prototype.includes) {
     String.prototype.includes = function() {
         'use strict';
