@@ -197,7 +197,7 @@ function disableUI( ui ){
 	else if( ui.is(':text') || ui.is('textarea') ){ ui.val(''); }
 	else{
 		// Gestione date
-		var d = ui.attr('id');
+		var d = ui.attr('name');
 		console.log( "ID " + d );
 		if( d && ( d.contains( "[day]" ) || d.contains( "[month]" ) || d.contains( "[year]" ) ) ) { 
 		   ui.val('0'); 
@@ -220,7 +220,7 @@ function enableUI( ui ){
 	ui.prop( "disabled", false ); 
 	$('label[for='+ui.attr('id')+']').css("color", "black" );
 	
-	var d = ui.attr('id');
+	var d = ui.attr('name');
 	if( d && d.contains( "[day]" ) ){ 
 		var idm = d.substring( 0, d.length - 5 );  
 		enableUI( $( "[name='" + idm + "[month]']" ) ); 
@@ -383,6 +383,6 @@ validaTutti( ["email", "pec"], controllaEMAIL );
 validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva"], controllaPIVA );
 
-console.log("TEST ME 5g");
+console.log("TEST ME 5h");
 
 
