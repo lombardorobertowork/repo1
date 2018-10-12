@@ -1,5 +1,5 @@
-console.log( "ie" );
 
+// COMPATIBILITA CON FIREFOX ED IE 11
 if (!String.prototype.includes) {
     String.prototype.includes = function() {
         'use strict';
@@ -271,9 +271,11 @@ function enableUI( ui ){
 	}
 }
 
+// Per COMPATIBILITA CON FIREFOX ED IE 11 non uso argomento con valore di default enableWhenChecked=true
+// Invece imposto enableWhenChecked a true di default nel corpo della funzione.
 function checkboxEnablesUis( controllerCheckbox, controlledUIS, enableWhenChecked ) 
 {
-	// enableWhenChecked di default viene impostato a true
+	
 	if( enableWhenChecked === undefined ){ enableWhenChecked = true; }
 	var f1 = function() { 
 		var isChecked = false;
@@ -429,6 +431,6 @@ validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva"], controllaPIVA );
 validaTutti( ["quota"], controllaCAP );
 
-console.log("TEST ME 5f");
+console.log("TEST ME 5g");
 
 
