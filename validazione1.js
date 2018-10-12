@@ -1,4 +1,9 @@
-
+if (!String.prototype.includes) {
+    String.prototype.includes = function() {
+        'use strict';
+        return String.prototype.indexOf.apply(this, arguments) !== -1;
+    };
+}
 
 // --------- UTILITA' CSS ----------- 
 	
@@ -420,6 +425,6 @@ validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva"], controllaPIVA );
 validaTutti( ["quota"], controllaCAP );
 
-console.log("TEST ME 5d");
+console.log("TEST ME 5e");
 
 
