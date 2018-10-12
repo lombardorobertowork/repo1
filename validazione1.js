@@ -198,14 +198,14 @@ function disableUI( ui ){
 	else{
 		// Gestione date
 		var d = ui.attr('name');
-		console.log( "ID " + d );
+		// console.log( "ID " + d );
 		if( d && ( d.contains( "[day]" ) || d.contains( "[month]" ) || d.contains( "[year]" ) ) ) { 
 		   ui.val('0'); 
 		}
 		// Se il campo e' il giorno di una data --> disabilita anche gli altri campi della data
 		if( d && d.contains( "[day]" ) ){ 
 			var idm = d.substring( 0, d.length - 5 );  
-			console.log( "ID DATA: " + "#" + idm + "[month]" + "  OBJ " + $( "#" + idm + "[month]" ) );
+			// console.log( "ID DATA: " + "#" + idm + "[month]" + "  OBJ " + $( "#" + idm + "[month]" ) );
 			
 			disableUI( $( "[name='" + idm + "[month]']" ) ); 
 			disableUI( $( "[name='" + idm + "[year]']" ) ); 
@@ -383,6 +383,6 @@ validaTutti( ["email", "pec"], controllaEMAIL );
 validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva"], controllaPIVA );
 
-console.log("TEST ME 5h");
+console.log("TEST ME 5i");
 
 
