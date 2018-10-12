@@ -428,9 +428,9 @@ function validaTutti( labels, callback )
 validaTutti( ["telefono", "fax", "cellulare"], controllaTEL );
 validaTutti( ["email", "pec"], controllaEMAIL );
 validaTutti( ["cap"], controllaCAP );
-validaTutti( ["partita iva"], controllaPIVA );
+validaTutti( ["partita iva", "PIVA"], controllaPIVA );
 validaTutti( ["quota"], controllaCAP );
 
-console.log("TEST ME 5g");
+console.log("TEST ME 5h");
 
 
