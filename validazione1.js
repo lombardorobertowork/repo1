@@ -402,6 +402,8 @@ function controllaTEL( ui ){ ui.on( 'input', function(){ validaUI_TEL(  ui ); })
 // - una stringa di labels seguito o preceduta da uno spazio
 function validaTutti( labels, callback )
 {
+	// var set_di_id_da_non_validare = undefined;
+	// if( array_di_id_da_non_validare !== undefined ){ set_di_id_da_non_validare = new Set( array_di_id_da_non_validare ); }
 	
 	// Per ogni oggetto html di tipo <label>
 	$( 'label' ).each( function( i ){
