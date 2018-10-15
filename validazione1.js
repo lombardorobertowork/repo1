@@ -429,8 +429,8 @@ validaTutti( ["telefono", "fax", "cellulare"], controllaTEL );
 validaTutti( ["email", "pec"], controllaEMAIL );
 validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva", "PIVA"], controllaPIVA );
-validaTutti( ["quota"], controllaCAP );
+validaTutti( ["quota"], controllaQUOTA );
 
-console.log("TEST ME 5h");
+console.log("TEST ME 5i");
 
 
