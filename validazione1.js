@@ -236,10 +236,9 @@ function disableUI( ui ){
 	// 2018 10 17 - PROBLEMA ART 80 undefined
 	// ui.prop( "disabled", true ); 
 	var d = ui.attr('name');
-	if( d && !d.includes( "[day]" ) && !d.includes( "[month]" ) && !d.includes( "[year]" )  ){ 
-		// se il campo non è una data, disabilita eventi mouse
-		ui.css( 'pointer-events', 'none' );
-	}
+	//if( d && !d.includes( "[day]" ) && !d.includes( "[month]" ) && !d.includes( "[year]" )  ){ 
+	ui.css( 'pointer-events', 'none' );
+	// }
 	
 	$('label[for='+ui.attr('id')+']').css("color", lightGray );
 	if( ui.is(':checkbox') ){ ui.prop('checked', false); }
