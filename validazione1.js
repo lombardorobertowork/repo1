@@ -249,7 +249,9 @@ function disableUI( ui ){
 		
 		// console.log( "ID " + d );
 		if( d && ( d.includes( "[day]" ) || d.includes( "[month]" ) || d.includes( "[year]" ) ) ) { 
-		   ui.val('0'); 
+		   // 2018 10 17 - PROBLEMA ART 80 undefined
+		   // ui.val('0'); 
+		   ui.val(''); 
 		   ui.css('background-color', lightGray ); 	
 		}
 		// Se il campo e' il giorno di una data --> disabilita anche gli altri campi della data
@@ -453,6 +455,6 @@ validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva", "PIVA"], controllaPIVA );
 validaTutti( ["quota"], controllaQUOTA );
 
-console.log("TEST ME 5r3.1");
+console.log("TEST ME 5r4");
 
 
