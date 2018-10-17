@@ -1,4 +1,4 @@
-console.log("TEST ME 5u11");
+console.log("TEST ME 5v");
 
 // COMPATIBILITA CON FIREFOX ED IE 11
 if (!String.prototype.includes) {
@@ -101,6 +101,35 @@ function formula_ribasso( base_asta, importo_offerta ){ return new Big(100).minu
 		}		
 	}
 */
+
+// ---------- AJAX -------------------------------
+
+var URL_AJAX_RECORDS = 'http://www.ingeniousgroup.it/gare/area-azienda/ajax-records';
+/*
+Es query = "anagrafica_socio_accomandatari"  per MULTIRECORD
+Es query = "anagrafica,nome_cognome" Per SINGLE RECORD
+*/
+function leggiForm( query , callback ) 
+{
+$.ajax( {
+
+   url: URL_AJAX_RECORDS,
+   data: { campi:  query }, 
+   error: function() {
+      console.log( 'AJAX CALL to ' + URL_AJAX_RECORDS +  ': error.' );
+   },
+   success: function( dataString ) 
+   {
+		var data = undefined;   var error = false;  
+	   
+		try{ data = JSON.parse( dataString ); }
+		catch( err ){ error = true; }
+
+		if( !error ){  var mydata = null; if( data ){ callback( data );	} }	
+   },
+   type: 'POST'
+} );
+}
 
 // ---------- FUNZIONI DI VALIDAZIONE -------------
 
@@ -337,6 +366,22 @@ function applicaAData( uiID, callback ){
 	var d3 = $( '[name="'+uiID+'[year]"]' );
 		
 	callback( d1 ); callback( d2 ); callback( d3 );
+}
+
+
+
+// Attiva autocompletamento su ui (ad es: un Text Input), dando come suggerimenti il contenuto d form.campo 
+// NB: form deve essere essere multirecord
+function autocompletamentoConDatiDaForm( ui, form, campo )
+{
+	leggiForm( form, function( data )
+	{ 
+		var listaElementi = []; var d1 = data[form];
+		for( var ii=0; ii < d1.length; ii++ ){	var elem = d1[ii][campo]; 	listaElementi.push( elem );	}
+					
+		ui.autocomplete({ minLength: 0, source: listaElementi })
+		.focus(function () { $(this).autocomplete("search", ""); });
+	} );
 }
 
 // -------------- VALIDAZIONE UI ---------------
