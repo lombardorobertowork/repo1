@@ -1,4 +1,4 @@
-console.log("TEST ME 5u10");
+console.log("TEST ME 5u11");
 
 // COMPATIBILITA CON FIREFOX ED IE 11
 if (!String.prototype.includes) {
@@ -463,6 +463,8 @@ function validaTutti( labels, callback )
 		
 	});
 };
+
+function nonValidare( ui ){ ui.unbind();  set_css_valid( ui ); } 
 
 validaTutti( ["telefono", "fax", "cellulare"], controllaTEL );
 validaTutti( ["email", "pec"], controllaEMAIL );
