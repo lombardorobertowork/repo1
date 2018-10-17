@@ -275,7 +275,7 @@ function enableUI( ui ){
 	ui.css( 'pointer-events', '' );
 	if( d && ( d.includes( "[day]" ) || d.includes( "[month]" ) || d.includes( "[year]" ) ) ) { 
 		// se campo fa parte di una data: 
-		ui.css('background-color', lightGray ); 	
+		ui.css('background-color', valid_back_color ); 	
 	}
 
 	$('label[for='+ui.attr('id')+']').css("color", "black" );
@@ -453,6 +453,6 @@ validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva", "PIVA"], controllaPIVA );
 validaTutti( ["quota"], controllaQUOTA );
 
-console.log("TEST ME 5r2");
+console.log("TEST ME 5r3");
 
 
