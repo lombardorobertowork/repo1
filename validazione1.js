@@ -1,4 +1,4 @@
-console.log("TEST ME 5v");
+console.log("TEST ME 5z");
 
 // COMPATIBILITA CON FIREFOX ED IE 11
 if (!String.prototype.includes) {
@@ -486,26 +486,27 @@ function validaTutti( labels, callback )
 	
 	// Per ogni oggetto html di tipo <label>
 	$( 'label' ).each( function( i ){
-		var id = null;
-		var labelElem = $(this);			
-		
-		
-		$.each( labels, function( i, val )
-		{ 
-			var s1 = labelElem.html().trim().toLowerCase();
-			var s2 = val.trim().toLowerCase();
-			
-			if( ( s1 === s2 ) || ( s1.includes( " " + s2 ) ) || ( s1.includes( s2 + " " ) ) ){	
-				id = labelElem.prop('for');	
-			}
-		});
-		
-		if( id && ( id.length > 0 ) ){	
-			
-			callback( $( '#' + id ) );	
-			
-		}		
-		
+		try{
+			var id = null;
+			var labelElem = $(this);			
+
+
+			$.each( labels, function( i, val )
+			{ 
+				var s1 = labelElem.html().trim().toLowerCase();
+				var s2 = val.trim().toLowerCase();
+
+				if( ( s1 === s2 ) || ( s1.includes( " " + s2 ) ) || ( s1.includes( s2 + " " ) ) ){	
+					id = labelElem.prop('for');	
+				}
+			});
+
+			if( id && ( id.length > 0 ) ){	
+
+				callback( $( '#' + id ) );	
+
+			}		
+		} catch ( err ){ }
 	});
 };
 
