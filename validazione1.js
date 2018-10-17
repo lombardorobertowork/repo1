@@ -1,4 +1,4 @@
-console.log("TEST ME 6c");
+console.log("TEST ME 6d");
 
 // COMPATIBILITA CON FIREFOX ED IE 11
 if (!String.prototype.includes) {
