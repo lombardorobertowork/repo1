@@ -267,7 +267,7 @@ function disableUI( ui ){
 
 // // Se riceve un campo "[day]" di una data abilita anche gli altri due campi [month] e [year]
 function enableUI( ui ){
-	
+	var lightGray = "#D3D3D3";
 	var d = ui.attr('name');
 	
 	// 2018 10 17 - PROBLEMA ART 80 undefined
@@ -453,6 +453,6 @@ validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva", "PIVA"], controllaPIVA );
 validaTutti( ["quota"], controllaQUOTA );
 
-console.log("TEST ME 5q");
+console.log("TEST ME 5r");
 
 
