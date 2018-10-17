@@ -1,4 +1,4 @@
-console.log("TEST ME 6a");
+console.log("TEST ME 6b");
 
 // COMPATIBILITA CON FIREFOX ED IE 11
 if (!String.prototype.includes) {
@@ -502,9 +502,7 @@ function validaTutti( labels, callback )
 			});
 
 			if( id && ( id.length > 0 ) ){	
-
-				callback( $( '#' + id ) );	
-
+				var elem = $( '#' + id ); if( elem ){ callback( elem ); }	
 			}		
 		
 	});
