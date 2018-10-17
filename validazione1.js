@@ -233,8 +233,10 @@ function addRadioButtonsBehaviour( radioButtonList )
 // Se riceve un campo "[day]" di una data disabilita anche gli altri due campi [month] e [year]
 function disableUI( ui ){
 	var lightGray = "#D3D3D3";
-	// ui.attr( "disabled", true ); 
-	ui.prop( "disabled", true ); 
+	// 2018 10 17 - PROBLEMA ART 80
+	// ui.prop( "disabled", true ); 
+	ui.click(false);
+	
 	$('label[for='+ui.attr('id')+']').css("color", lightGray );
 	if( ui.is(':checkbox') ){ ui.prop('checked', false); }
 	else if( ui.is(':text') || ui.is('textarea') ){ ui.val(''); }
@@ -260,7 +262,10 @@ function disableUI( ui ){
 // // Se riceve un campo "[day]" di una data abilita anche gli altri due campi [month] e [year]
 function enableUI( ui ){
 	
-	ui.prop( "disabled", false ); 
+	// 2018 10 17 - PROBLEMA ART 80
+	// ui.prop( "disabled", false ); 
+	ui.click(true);
+	
 	$('label[for='+ui.attr('id')+']').css("color", "black" );
 	
 	var d = ui.attr('name');
@@ -436,6 +441,6 @@ validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva", "PIVA"], controllaPIVA );
 validaTutti( ["quota"], controllaQUOTA );
 
-console.log("TEST ME 5k");
+console.log("TEST ME 5m");
 
 
