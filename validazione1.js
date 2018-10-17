@@ -1,4 +1,4 @@
-console.log("TEST ME 5u8");
+console.log("TEST ME 5u9");
 
 // COMPATIBILITA CON FIREFOX ED IE 11
 if (!String.prototype.includes) {
@@ -73,8 +73,12 @@ function get_text( elem ){ return elem.val().trim(); }
 
 // --------- FORMULE ------------
 	
-	function formula_importo_offerta( base_asta, ribasso ){ return base_asta.times( new Big(100).minus( ribasso ) ).div(100); }
+function formula_importo_offerta( base_asta, ribasso ){ return base_asta.times( new Big(100).minus( ribasso ) ).div(100); }
 	
+	
+function formula_ribasso( base_asta, importo_offerta ){ return new Big(100).minus( importo_offerta.times(100).div(base_asta) );  }
+	
+/*
 	function avvia_calcolo_importo_offerta(  )
 	{
 		var ba = getBaseAstaFromUI();
@@ -86,8 +90,6 @@ function get_text( elem ){ return elem.val().trim(); }
 		}		
 	}
 
-	function formula_ribasso( base_asta, importo_offerta ){ return new Big(100).minus( importo_offerta.times(100).div(base_asta) );  }
-	
 	function avvia_calcolo_ribasso(  )
 	{
 		var ba = getBaseAstaFromUI();
@@ -98,6 +100,7 @@ function get_text( elem ){ return elem.val().trim(); }
 			setRibassoUI( rib );
 		}		
 	}
+*/
 
 // ---------- FUNZIONI DI VALIDAZIONE -------------
 
