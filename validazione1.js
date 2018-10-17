@@ -1,4 +1,4 @@
-console.log("TEST ME 6h");
+console.log("TEST ME 6i");
 
 // COMPATIBILITA CON FIREFOX ED IE 11
 if (!String.prototype.includes) {
@@ -442,7 +442,7 @@ function validaUI_TEL( ui ){
 }
 
 // Per comodità aggiungo queste funzioni:
-function controllaCAP( ui ){    if(ui){ ui.on( 'input', function(){ validaUI_CAP(  ui ); }); validaUI_CAP( ui ); } } }
+function controllaCAP( ui ){    if(ui){ ui.on( 'input', function(){ validaUI_CAP(  ui ); }); validaUI_CAP( ui ); } }
 function controllaPIVA(  ui ){  if(ui){ ui.on( 'input', function(){ validaUI_PIVA(   ui ); }); validaUI_PIVA( ui ); } }
 function controllaCF_PERS( ui ){if(ui){ ui.on( 'input', function(){ validaUI_CF(   ui ); }); validaUI_CF( ui ); } }
 function controllaCF_AZ( ui ){  if(ui){ ui.on( 'input', function(){ validaUI_CF_AZIENDA(   ui ); }); validaUI_CF_AZIENDA( ui ); } }
