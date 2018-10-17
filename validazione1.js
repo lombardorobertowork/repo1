@@ -234,11 +234,12 @@ function addRadioButtonsBehaviour( radioButtonList )
 function disableUI( ui ){
 	
 	var lightGray = "#D3D3D3";
+	var d = ui.attr('name');
 	
 	// ---- DISABILITARE MOUSE   -----
 	// 2018 10 17 - PROBLEMA ART 80 undefined
 	// ui.prop( "disabled", true ); 
-	// var d = ui.attr('name');
+	
 	//if( d && !d.includes( "[day]" ) && !d.includes( "[month]" ) && !d.includes( "[year]" )  ){ 
 	ui.css( 'pointer-events', 'none' );
 	if( ui.is(':checkbox') ){ ui.click(function(){return false;}); }
@@ -463,6 +464,6 @@ validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva", "PIVA"], controllaPIVA );
 validaTutti( ["quota"], controllaQUOTA );
 
-console.log("TEST ME 5u4");
+console.log("TEST ME 5u5");
 
 
