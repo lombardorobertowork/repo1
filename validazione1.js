@@ -1,4 +1,4 @@
-console.log("TEST ME 6d");
+console.log("TEST ME 6e");
 
 // COMPATIBILITA CON FIREFOX ED IE 11
 if (!String.prototype.includes) {
@@ -442,11 +442,11 @@ function validaUI_TEL( ui ){
 }
 
 // Per comodità aggiungo queste funzioni:
-function controllaCAP( ui ){     ui.on( 'input', function(){ validaUI_CAP(  ui ); }); validaUI_CAP( ui ); };
-function controllaPIVA(  ui ){   ui.on( 'input', function(){ validaUI_PIVA(   ui ); }); validaUI_PIVA( ui ); };
-function controllaCF_PERS( ui ){ ui.on( 'input', function(){ validaUI_CF(   ui ); }); validaUI_CF( ui ); };
-function controllaCF_AZ( ui ){   ui.on( 'input', function(){ validaUI_CF_AZIENDA(   ui ); }); validaUI_CF_AZIENDA( ui ); };
-function controllaQUOTA( ui ){   ui.on( 'input', function(){ validaUI_QUOTA(   ui ); }); validaUI_QUOTA( ui ); };
+function controllaCAP( ui ){     ui.on( 'input', function(){ validaUI_CAP(  ui ); }); validaUI_CAP( ui ); }
+function controllaPIVA(  ui ){   ui.on( 'input', function(){ validaUI_PIVA(   ui ); }); validaUI_PIVA( ui ); }
+function controllaCF_PERS( ui ){ ui.on( 'input', function(){ validaUI_CF(   ui ); }); validaUI_CF( ui ); }
+function controllaCF_AZ( ui ){   ui.on( 'input', function(){ validaUI_CF_AZIENDA(   ui ); }); validaUI_CF_AZIENDA( ui ); }
+function controllaQUOTA( ui ){   ui.on( 'input', function(){ validaUI_QUOTA(   ui ); }); validaUI_QUOTA( ui ); }
 function controllaIMPORTO( ui )
 {
 	var f1 = function( converti )
@@ -467,9 +467,9 @@ function controllaIMPORTO( ui )
 
 	ui.on( 'input', f1 ); f1( true );
 
-};
-function controllaEMAIL( ui ){ ui.on( 'input', function(){ validaUI_EMAIL(  ui ); }); validaUI_EMAIL( ui ); };
-function controllaTEL( ui ){ ui.on( 'input', function(){ validaUI_TEL(  ui ); }); validaUI_TEL( ui ); };
+}
+function controllaEMAIL( ui ){ ui.on( 'input', function(){ validaUI_EMAIL(  ui ); }); validaUI_EMAIL( ui ); }
+function controllaTEL( ui ){ ui.on( 'input', function(){ validaUI_TEL(  ui ); }); validaUI_TEL( ui ); }
 
 // -------------------------- VALIDAZIONE AUTOMATICA -------------------------
 
@@ -502,10 +502,11 @@ function validaTutti( labels, callback )
 			});
 
 			if( id && ( id.length > 0 ) ){	
-				var elem = $( '#' + id ); if( elem ){ 
-					console.log( "debug id: " + elem.attr( "id" ) );
-					callback( elem ); 
-				}	
+				var elem = $( '#' + id ); 
+				// if( elem ){ 
+				// 	console.log( "debug id: " + elem.attr( "id" ) );
+				callback( elem ); 
+				// }	
 			}		
 		
 	});
