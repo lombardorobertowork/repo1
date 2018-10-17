@@ -1,4 +1,4 @@
-console.log("TEST ME 6e");
+console.log("TEST ME 6g");
 
 // COMPATIBILITA CON FIREFOX ED IE 11
 if (!String.prototype.includes) {
@@ -442,34 +442,35 @@ function validaUI_TEL( ui ){
 }
 
 // Per comodità aggiungo queste funzioni:
-function controllaCAP( ui ){     ui.on( 'input', function(){ validaUI_CAP(  ui ); }); validaUI_CAP( ui ); }
-function controllaPIVA(  ui ){   ui.on( 'input', function(){ validaUI_PIVA(   ui ); }); validaUI_PIVA( ui ); }
-function controllaCF_PERS( ui ){ ui.on( 'input', function(){ validaUI_CF(   ui ); }); validaUI_CF( ui ); }
-function controllaCF_AZ( ui ){   ui.on( 'input', function(){ validaUI_CF_AZIENDA(   ui ); }); validaUI_CF_AZIENDA( ui ); }
-function controllaQUOTA( ui ){   ui.on( 'input', function(){ validaUI_QUOTA(   ui ); }); validaUI_QUOTA( ui ); }
+function controllaCAP( ui ){    if(ui){ ui.on( 'input', function(){ validaUI_CAP(  ui ); }); validaUI_CAP( ui ); } } }
+function controllaPIVA(  ui ){  if(ui){ ui.on( 'input', function(){ validaUI_PIVA(   ui ); }); validaUI_PIVA( ui ); } }
+function controllaCF_PERS( ui ){if(ui){ ui.on( 'input', function(){ validaUI_CF(   ui ); }); validaUI_CF( ui ); } }
+function controllaCF_AZ( ui ){  if(ui){ ui.on( 'input', function(){ validaUI_CF_AZIENDA(   ui ); }); validaUI_CF_AZIENDA( ui ); } }
+function controllaQUOTA( ui ){   if(ui){ ui.on( 'input', function(){ validaUI_QUOTA(   ui ); }); validaUI_QUOTA( ui ); } }
 function controllaIMPORTO( ui )
 {
-	var f1 = function( converti )
-	{ 
-		var t = get_text( ui );
-		if( is_formato_punto( t ) && converti ) 
-		{
-			var numInPointVirgFormat = convertFormatoPuntoToFormatoPuntoEVirgola( t );
-			ui.val( numInPointVirgFormat );	
-			set_css_valid( ui );
-		} 
-		else if( is_formato_punto_e_virgola(t) || is_vuoto(t) )
-		{	
-			set_css_valid( ui );  
+	if(ui){
+		var f1 = function( converti )
+		{ 
+			var t = get_text( ui );
+			if( is_formato_punto( t ) && converti ) 
+			{
+				var numInPointVirgFormat = convertFormatoPuntoToFormatoPuntoEVirgola( t );
+				ui.val( numInPointVirgFormat );	
+				set_css_valid( ui );
+			} 
+			else if( is_formato_punto_e_virgola(t) || is_vuoto(t) )
+			{	
+				set_css_valid( ui );  
+			}
+			else { set_css_error( ui ); }
 		}
-		else { set_css_error( ui ); }
+
+		ui.on( 'input', f1 ); f1( true );
 	}
-
-	ui.on( 'input', f1 ); f1( true );
-
 }
-function controllaEMAIL( ui ){ ui.on( 'input', function(){ validaUI_EMAIL(  ui ); }); validaUI_EMAIL( ui ); }
-function controllaTEL( ui ){ ui.on( 'input', function(){ validaUI_TEL(  ui ); }); validaUI_TEL( ui ); }
+function controllaEMAIL( ui ){ if(ui){ui.on( 'input', function(){ validaUI_EMAIL(  ui ); }); validaUI_EMAIL( ui ); } }
+function controllaTEL( ui ){ if(ui){ ui.on( 'input', function(){ validaUI_TEL(  ui ); }); validaUI_TEL( ui ); } }
 
 // -------------------------- VALIDAZIONE AUTOMATICA -------------------------
 
