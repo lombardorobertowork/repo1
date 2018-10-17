@@ -279,7 +279,7 @@ function enableUI( ui ){
 	// ---- ABILITARE MOUSE   -----
 	// 2018 10 17 - PROBLEMA ART 80 undefined
 	// ui.prop( "disabled", false ); 
-	if( ui.is(':checkbox') ){ ui.click(function(){return true;}); }
+	if( ui.is(':checkbox') ){ ui.unbind("click"); }
 	ui.css( 'pointer-events', '' );
 	if( d && ( d.includes( "[day]" ) || d.includes( "[month]" ) || d.includes( "[year]" ) ) ) { 
 		// se campo fa parte di una data: 
@@ -463,6 +463,6 @@ validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva", "PIVA"], controllaPIVA );
 validaTutti( ["quota"], controllaQUOTA );
 
-console.log("TEST ME 5u2");
+console.log("TEST ME 5u3");
 
 
