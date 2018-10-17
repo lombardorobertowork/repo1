@@ -232,12 +232,16 @@ function addRadioButtonsBehaviour( radioButtonList )
 
 // Se riceve un campo "[day]" di una data disabilita anche gli altri due campi [month] e [year]
 function disableUI( ui ){
+	
 	var lightGray = "#D3D3D3";
+	
+	// ---- DISABILITARE MOUSE   -----
 	// 2018 10 17 - PROBLEMA ART 80 undefined
 	// ui.prop( "disabled", true ); 
-	var d = ui.attr('name');
+	// var d = ui.attr('name');
 	//if( d && !d.includes( "[day]" ) && !d.includes( "[month]" ) && !d.includes( "[year]" )  ){ 
 	ui.css( 'pointer-events', 'none' );
+	if( ui.is(':checkbox') ){ ui.click(false); }
 	// }
 	
 	$('label[for='+ui.attr('id')+']').css("color", lightGray );
@@ -268,16 +272,20 @@ function disableUI( ui ){
 
 // // Se riceve un campo "[day]" di una data abilita anche gli altri due campi [month] e [year]
 function enableUI( ui ){
+	
 	var lightGray = "#D3D3D3";
 	var d = ui.attr('name');
 	
+	// ---- ABILITARE MOUSE   -----
 	// 2018 10 17 - PROBLEMA ART 80 undefined
 	// ui.prop( "disabled", false ); 
+	if( ui.is(':checkbox') ){ ui.click( true ); }
 	ui.css( 'pointer-events', '' );
 	if( d && ( d.includes( "[day]" ) || d.includes( "[month]" ) || d.includes( "[year]" ) ) ) { 
 		// se campo fa parte di una data: 
 		ui.css('background-color', valid_back_color ); 	
 	}
+	// -----------------------------------------
 
 	$('label[for='+ui.attr('id')+']').css("color", "black" );
 		
@@ -287,6 +295,7 @@ function enableUI( ui ){
 		enableUI( $( "[name='" + idm + "[month]']" ) ); 
 		enableUI( $( "[name='" + idm + "[year]']" ) ); 
 	}
+	
 }
 
 // Per COMPATIBILITA CON FIREFOX ED IE 11 non uso argomento con valore di default enableWhenChecked=true
@@ -454,6 +463,6 @@ validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva", "PIVA"], controllaPIVA );
 validaTutti( ["quota"], controllaQUOTA );
 
-console.log("TEST ME 5s");
+console.log("TEST ME 5t");
 
 
