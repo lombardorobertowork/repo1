@@ -1,4 +1,4 @@
-console.log("TEST ME 5z");
+console.log("TEST ME 6a");
 
 // COMPATIBILITA CON FIREFOX ED IE 11
 if (!String.prototype.includes) {
@@ -486,7 +486,7 @@ function validaTutti( labels, callback )
 	
 	// Per ogni oggetto html di tipo <label>
 	$( 'label' ).each( function( i ){
-		try{
+		
 			var id = null;
 			var labelElem = $(this);			
 
@@ -506,7 +506,7 @@ function validaTutti( labels, callback )
 				callback( $( '#' + id ) );	
 
 			}		
-		} catch ( err ){ }
+		
 	});
 };
 
