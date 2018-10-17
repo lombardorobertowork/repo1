@@ -441,6 +441,6 @@ validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva", "PIVA"], controllaPIVA );
 validaTutti( ["quota"], controllaQUOTA );
 
-console.log("TEST ME 5n");
+console.log("TEST ME 5o");
 
 
