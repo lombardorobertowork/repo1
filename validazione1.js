@@ -1,4 +1,4 @@
-console.log("TEST ME 5u6");
+console.log("TEST ME 5u7");
 
 // COMPATIBILITA CON FIREFOX ED IE 11
 if (!String.prototype.includes) {
@@ -238,33 +238,33 @@ function disableUI( ui ){
 	var d = ui.attr('name');
 	
 	// ---- DISABILITARE MOUSE   -----
-	// 2018 10 17 - PROBLEMA ART 80 undefined
-	// ui.prop( "disabled", true ); 
 	
+	// 2018 10 17 - PROBLEMA ART 80 undefined
+	// ui.prop( "disabled", true ); 	
 	//if( d && !d.includes( "[day]" ) && !d.includes( "[month]" ) && !d.includes( "[year]" )  ){ 
 	ui.css( 'pointer-events', 'none' );
 	if( ui.is(':checkbox') ){ ui.click(function(){return false;}); }
 	// }
 	
+	// ----- DISABILITAZIONE: SETTARE CSS E VALORI
+	
+	// label
 	$('label[for='+ui.attr('id')+']').css("color", lightGray );
+	// checkbox
 	if( ui.is(':checkbox') ){ ui.prop('checked', false); }
+	// text e textarea
 	else if( ui.is(':text') || ui.is('textarea') ){ ui.val(''); }
 	else{
-		// Gestione date
-		
-		// console.log( "ID " + d );
+		// date: settare css e valori per disabilitazione
 		if( d && ( d.includes( "[day]" ) || d.includes( "[month]" ) || d.includes( "[year]" ) ) ) { 
 		   // 2018 10 17 - PROBLEMA ART 80 undefined
-		   // ui.val('0'); 
 		   ui.val(''); 
 		   ui.css('background-color', lightGray ); 	
 		}
-		// Se il campo e' il giorno di una data --> disabilita anche gli altri campi della data
+		// Se il campo e' il giorno di una data --> invoca disabilitazione anche per altri campi della data
 		if( d && d.includes( "[day]" ) ){ 
-			var idm = d.substring( 0, d.length - 5 );  
-			// console.log( "ID DATA: " + "#" + idm + "[month]" + "  OBJ " + $( "#" + idm + "[month]" ) );
 			
-			// 2018 10 17 - PROBLEMA ART 80 undefined
+			var idm = d.substring( 0, d.length - 5 );  
 			disableUI( $( "[name='" + idm + "[month]']" ) ); 
 			disableUI( $( "[name='" + idm + "[year]']" ) ); 
 		}
@@ -279,19 +279,21 @@ function enableUI( ui ){
 	var d = ui.attr('name');
 	
 	// ---- ABILITARE MOUSE   -----
+	
 	// 2018 10 17 - PROBLEMA ART 80 undefined
 	// ui.prop( "disabled", false ); 
 	if( ui.is(':checkbox') ){ ui.unbind("click"); }
 	ui.css( 'pointer-events', '' );
-	if( d && ( d.includes( "[day]" ) || d.includes( "[month]" ) || d.includes( "[year]" ) ) ) { 
-		// se campo fa parte di una data: 
+	
+	// --------- SETTARE LAYOUT CON CSS
+	// date
+	if( d && ( d.includes( "[day]" ) || d.includes( "[month]" ) || d.includes( "[year]" ) ) ) { 	
 		ui.css('background-color', valid_back_color ); 	
 	}
-	// -----------------------------------------
-
-	$('label[for='+ui.attr('id')+']').css("color", "black" );
-		
 	
+	$('label[for='+ui.attr('id')+']').css("color", "black" );
+	
+	// Se il campo e' il giorno di una data --> invoca abilitazione anche per altri campi della data
 	if( d && d.includes( "[day]" ) ){ 
 		var idm = d.substring( 0, d.length - 5 );  
 		enableUI( $( "[name='" + idm + "[month]']" ) ); 
