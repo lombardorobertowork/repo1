@@ -235,7 +235,7 @@ function disableUI( ui ){
 	var lightGray = "#D3D3D3";
 	// 2018 10 17 - PROBLEMA ART 80
 	// ui.prop( "disabled", true ); 
-	ui.click(false);
+	ui.click(function(){return false;});
 	
 	$('label[for='+ui.attr('id')+']').css("color", lightGray );
 	if( ui.is(':checkbox') ){ ui.prop('checked', false); }
@@ -264,7 +264,7 @@ function enableUI( ui ){
 	
 	// 2018 10 17 - PROBLEMA ART 80
 	// ui.prop( "disabled", false ); 
-	ui.click(true);
+	ui.click(function(){return true;});
 	
 	$('label[for='+ui.attr('id')+']').css("color", "black" );
 	
@@ -441,6 +441,6 @@ validaTutti( ["cap"], controllaCAP );
 validaTutti( ["partita iva", "PIVA"], controllaPIVA );
 validaTutti( ["quota"], controllaQUOTA );
 
-console.log("TEST ME 5m");
+console.log("TEST ME 5n");
 
 
