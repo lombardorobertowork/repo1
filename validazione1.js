@@ -1,4 +1,4 @@
-console.log("TEST ME 6i");
+console.log("TEST ME 6j");
 
 // COMPATIBILITA CON FIREFOX ED IE 11
 if (!String.prototype.includes) {
@@ -266,7 +266,7 @@ function addRadioButtonsBehaviour( radioButtonList )
 // Se riceve un campo "[day]" di una data disabilita anche gli altri due campi [month] e [year]
 function disableUI( ui ){
 	
-	var lightGray = "#D3D3D3";
+	var lightGray = "#F0F0F0"; // "#D3D3D3";
 	var d = ui.attr('name');
 	
 	// ---- DISABILITARE MOUSE   -----
@@ -285,7 +285,7 @@ function disableUI( ui ){
 	// checkbox
 	if( ui.is(':checkbox') ){ ui.prop('checked', false); }
 	// text e textarea
-	else if( ui.is(':text') || ui.is('textarea') ){ ui.val(''); }
+	else if( ui.is(':text') || ui.is('textarea') ){ ui.val(''); ui.css('background-color', lightGray );  }
 	else{
 		// date: settare css e valori per disabilitazione
 		if( d && ( d.includes( "[day]" ) || d.includes( "[month]" ) || d.includes( "[year]" ) ) ) { 
@@ -307,7 +307,7 @@ function disableUI( ui ){
 // // Se riceve un campo "[day]" di una data abilita anche gli altri due campi [month] e [year]
 function enableUI( ui ){
 	
-	var lightGray = "#D3D3D3";
+	var lightGray = "#F0F0F0"; // "#D3D3D3";
 	var d = ui.attr('name');
 	
 	// ---- ABILITARE MOUSE   -----
@@ -318,6 +318,8 @@ function enableUI( ui ){
 	ui.css( 'pointer-events', '' );
 	
 	// --------- SETTARE LAYOUT CON CSS
+	if( ui.is(':text') || ui.is('textarea') ){ ui.css('background-color', lightGray );  }
+	
 	// date
 	if( d && ( d.includes( "[day]" ) || d.includes( "[month]" ) || d.includes( "[year]" ) ) ) { 	
 		ui.css('background-color', valid_back_color ); 	
