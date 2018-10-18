@@ -1,4 +1,4 @@
-console.log("TEST ME 6k");
+console.log("TEST ME 6l");
 
 // COMPATIBILITA CON FIREFOX ED IE 11
 if (!String.prototype.includes) {
@@ -266,7 +266,7 @@ function addRadioButtonsBehaviour( radioButtonList )
 // Se riceve un campo "[day]" di una data disabilita anche gli altri due campi [month] e [year]
 function disableUI( ui ){
 	
-	var lightGray = "#F0F0F0"; // "#D3D3D3";
+	var lightGray = "#E0E0E0"; // "#F0F0F0"; // "#D3D3D3";
 	var d = ui.attr('name');
 	
 	// ---- DISABILITARE MOUSE   -----
@@ -307,7 +307,7 @@ function disableUI( ui ){
 // // Se riceve un campo "[day]" di una data abilita anche gli altri due campi [month] e [year]
 function enableUI( ui ){
 	
-	var lightGray = "#F0F0F0"; // "#D3D3D3";
+	var lightGray = "#E0E0E0"; // "#F0F0F0"; // "#D3D3D3";
 	var d = ui.attr('name');
 	
 	// ---- ABILITARE MOUSE   -----
