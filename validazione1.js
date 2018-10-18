@@ -1,4 +1,4 @@
-console.log("TEST ME 6j");
+console.log("TEST ME 6k");
 
 // COMPATIBILITA CON FIREFOX ED IE 11
 if (!String.prototype.includes) {
@@ -318,7 +318,7 @@ function enableUI( ui ){
 	ui.css( 'pointer-events', '' );
 	
 	// --------- SETTARE LAYOUT CON CSS
-	if( ui.is(':text') || ui.is('textarea') ){ ui.css('background-color', lightGray );  }
+	if( ui.is(':text') || ui.is('textarea') ){ ui.css('background-color', valid_back_color );  }
 	
 	// date
 	if( d && ( d.includes( "[day]" ) || d.includes( "[month]" ) || d.includes( "[year]" ) ) ) { 	
